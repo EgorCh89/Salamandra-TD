@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgao3s40kw34q"]
+
+[ext_resource type="Script" path="res://Objects/floorblock.gd" id="1_oxwu5"]
+
+[node name="Floorblock" type="Node2D"]
+script = ExtResource("1_oxwu5")
+
+[node name="Main" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MachineGun" type="Button" parent="."]
+visible = false
+offset_top = -57.0
+offset_right = 119.0
+text = "Machinegun"
+
+[node name="Archer" type="Button" parent="."]
+visible = false
+offset_left = -128.0
+offset_bottom = 55.0
+text = "Archer"
+
+[node name="Cannon" type="Button" parent="."]
+visible = false
+offset_left = -129.0
+offset_top = -56.0
+text = "Cannon"
+
+[node name="Sniper" type="Button" parent="."]
+visible = false
+offset_right = 119.0
+offset_bottom = 54.0
+text = "Sniper"
+
+[node name="CloseButton" type="Button" parent="."]
+visible = false
+offset_left = 1.0
+offset_top = -96.0
+offset_right = 59.0
+offset_bottom = -65.0
+text = "CLOSE"
+
+[connection signal="pressed" from="Main" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MachineGun" to="." method="_on_machine_gun_pressed"]
+[connection signal="pressed" from="Archer" to="." method="_on_archer_pressed"]
+[connection signal="pressed" from="Cannon" to="." method="_on_cannon_pressed"]
+[connection signal="pressed" from="Sniper" to="." method="_on_sniper_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu4yy0ajl4j3u"]
+
+[ext_resource type="Script" path="res://Objects/enemys/noob salamandr/salamandr.gd" id="1_lckqi"]
+[ext_resource type="Texture2D" uid="uid://h8ppxc0kaq3o" path="res://assets/enemy/noob salamandr/salamandra.png" id="2_n2t6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vetuw"]
+size = Vector2(82, 22)
+
+[node name="Salamandr" type="CharacterBody2D"]
+script = ExtResource("1_lckqi")
+
+[node name="Salamandra" type="Sprite2D" parent="."]
+scale = Vector2(0.0447917, 0.071875)
+texture = ExtResource("2_n2t6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vetuw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vetuw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

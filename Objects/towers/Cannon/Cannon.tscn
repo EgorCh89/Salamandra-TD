@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://crjjou6rbbvt3"]
+
+[ext_resource type="Texture2D" uid="uid://sxefaw088j2w" path="res://assets/towers/Cannon/cannon body.png" id="1_1lq16"]
+[ext_resource type="Texture2D" uid="uid://bu1xgo226rxqj" path="res://assets/towers/Cannon/cannon head.png" id="2_2k7ci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1sheq"]
+radius = 312.194
+
+[node name="Cannon" type="Node2D"]
+
+[node name="CannonBody" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+texture = ExtResource("1_1lq16")
+
+[node name="CannonHead" type="Sprite2D" parent="."]
+position = Vector2(-5, 3)
+texture = ExtResource("2_2k7ci")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="attackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackArea"]
+shape = SubResource("CircleShape2D_1sheq")
+
+[node name="bullets" type="Node" parent="."]

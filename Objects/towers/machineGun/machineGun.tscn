@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ir3fidn670xi"]
+
+[ext_resource type="Script" path="res://Objects/towers/machineGun/machineGun.gd" id="1_tj801"]
+[ext_resource type="Texture2D" uid="uid://b3i8cso23xqmn" path="res://assets/towers/machineGun/machineGun Budy.png" id="2_wnib2"]
+[ext_resource type="Texture2D" uid="uid://btiosx13iiiao" path="res://assets/towers/machineGun/machineGun Head.png" id="3_je2s0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yai5s"]
+radius = 436.775
+
+[node name="MachineGun" type="Node2D"]
+rotation = 6.28319
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_tj801")
+metadata/_edit_group_ = true
+
+[node name="MachineGunBudy" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_wnib2")
+
+[node name="MachineGunHead" type="Sprite2D" parent="."]
+texture = ExtResource("3_je2s0")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="attackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackArea"]
+shape = SubResource("CircleShape2D_yai5s")
+
+[node name="bullets" type="Node" parent="."]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="body_entered" from="attackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attackArea" to="." method="_on_attack_area_body_exited"]
