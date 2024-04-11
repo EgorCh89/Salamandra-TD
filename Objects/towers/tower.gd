@@ -8,3 +8,6 @@ class_name tower
 @export var rotation_speed:float
 @export var radius:float
 @export var level:int
+@export var ready_to_shoot:bool
+@export var enemys:Array
+

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmoisqnncip8c"]
+[gd_scene load_steps=5 format=3 uid="uid://dmoisqnncip8c"]
 
 [ext_resource type="Script" path="res://Objects/bullets/CannonBall.gd" id="1_npr22"]
 [ext_resource type="Texture2D" uid="uid://btrse1df8y6i8" path="res://assets/bullets/bomb.png" id="2_u3bua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcs5i"]
 size = Vector2(12, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc3jn"]
+radius = 70.0
 
 [node name="CannonBall" type="StaticBody2D"]
 script = ExtResource("1_npr22")
@@ -19,4 +22,11 @@ texture = ExtResource("2_u3bua")
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_mcs5i")
 
+[node name="ExplodeArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplodeArea2D"]
+shape = SubResource("CircleShape2D_lc3jn")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="ExplodeArea2D" to="." method="_on_explode_area_2d_body_entered"]
+[connection signal="body_exited" from="ExplodeArea2D" to="." method="_on_explode_area_2d_body_exited"]

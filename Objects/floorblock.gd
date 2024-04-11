@@ -38,8 +38,20 @@ func _on_sniper_pressed():
 
 
 func _on_archer_pressed():
-	pass # Replace with function body.
+	var archer_scene = preload("res://Objects/towers/Archer/Archer.tscn")
+	var archer = archer_scene.instantiate()
+	archer.pos = Vector2(self.pos.x*64 +32, self.pos.y *64 + 64 +32)
+	archer.level = 1
+	
+	$"../../Towers".add_child(archer)
+	queue_free()
 
 
 func _on_cannon_pressed():
-	pass # Replace with function body.
+	var cannon_scene = preload("res://Objects/towers/Cannon/Cannon.tscn")
+	var cannon = cannon_scene.instantiate()
+	cannon.pos = Vector2(self.pos.x*64 +32, self.pos.y *64 + 64 +32)
+	cannon.level = 1
+	
+	$"../../Towers".add_child(cannon)
+	queue_free()

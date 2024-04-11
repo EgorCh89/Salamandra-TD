@@ -1,21 +1,21 @@
 extends enemy_class
 
-
+class_name salamandr
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hp = 100
-	speed = 100
-	path = $"../../Path2D"
-	path_follow = PathFollow2D.new()
-	path.add_child(path_follow)
-	
-	
-	
+	self.hp = 100
+	self.speed = 100
+	self.path = Variables.enemy_path
+	self.path_follow = PathFollow2D.new()
+	if self.path != null:
+		self.path.add_child(path_follow)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	path_follow.progress+=speed * delta
 	self.rotation = path_follow.rotation
 	self.position = path_follow.position
+	$HpBar.value = hp
 	if hp <=0:
 		queue_free()
 
